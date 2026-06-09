@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#161815">
+  <title>Interview Mission Control</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <button class="brand" data-go="dashboard"><span>IM</span><strong>Interview Mission Control</strong></button>
+    <div class="active-mission" id="activeMission"></div>
+    <button class="icon-btn mobile-menu" id="menuButton" aria-label="Open menu">☰</button>
+  </header>
+
+  <div class="app-shell">
+    <aside class="sidebar" id="sidebar">
+      <nav id="mainNav"></nav>
+      <div class="side-actions">
+        <button class="button lime full" id="quickPrepButton">Quick prep</button>
+        <button class="button ghost full" id="printButton">Print prep sheet</button>
+      </div>
+    </aside>
+    <main id="app"></main>
+  </div>
+
+  <dialog id="profileDialog">
+    <button class="icon-btn close" data-close="profileDialog">×</button>
+    <p class="eyebrow">New mission</p>
+    <h2>Create an interview</h2>
+    <form id="newProfileForm" class="form-grid">
+      <label>Employer<input name="employer" required placeholder="Who is the employer?"></label>
+      <label>Job title<input name="jobTitle" required placeholder="What is the role?"></label>
+      <label>Interview date and time<input name="interviewDateTime" type="datetime-local"></label>
+      <label>Role type<select name="roleType"><option>customer service</option><option>retail</option><option>government</option><option>ICT</option><option>field work</option><option>education</option><option>other</option></select></label>
+      <label>Format<select name="format"><option>In person</option><option>Microsoft Teams</option><option>Phone</option><option>Other</option></select></label>
+      <label>Location or meeting link<input name="locationOrLink" placeholder="Address or link"></label>
+      <button class="button lime full-span" type="submit">Create interview <span>→</span></button>
+    </form>
+  </dialog>
+
+  <dialog id="quickDialog" class="wide-dialog">
+    <button class="icon-btn close" data-close="quickDialog">×</button>
+    <div id="quickContent"></div>
+  </dialog>
+
+  <dialog id="importDialog">
+    <button class="icon-btn close" data-close="importDialog">×</button>
+    <p class="eyebrow">Bring in a profile</p>
+    <h2>Import JSON</h2>
+    <textarea id="importText" rows="12" placeholder="Paste an exported interview profile here..."></textarea>
+    <button class="button lime full" id="confirmImport">Import profile</button>
+  </dialog>
+
+  <input id="importFile" type="file" accept=".json,application/json" hidden>
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
